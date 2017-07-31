@@ -8,10 +8,21 @@
       <link href="https://rsagroup.usablenet.net/h5/pet/module/styles.w_320-wk_Safari_-v1.546hc.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://rsagroup.usablenet.net/h5/pet/css/step-1.w_320-wk_Safari_-pet-1490263378000hc.css" />
   <link rel="stylesheet" href="https://rsagroup.usablenet.net/h5/pet/css/steps.w_320-wk_Safari_-pet-1490263378000hc.css" />
+  <!-- bootstrap not part of morethan css so hardcode the form layout -->
+  <style type="text/css">
+  form {padding:10px;display:block; }
+  fieldset { width:calc(45% - 0.3em); display:inline-block; vertical-align:top; padding:2%;border-radius:20px; background:rgba(0,116,34,0.5);margin-left:2%;margin-right:2%;  }
+  fieldset:nth-child(2n+2) { margin-left:4%; }
+  fieldset:last-of-type { width:96%; }
+  legend {  display:inline-block; width:100%; padding-top:2.5em;}
+  div.submit { width:96%; margin:2em 2%;}
+  </style>
 
 <!-- load the angular codebase -->
     <script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
 
+<!-- load our angular implementation js -->
+    <script src="app.js"></script>
 </head>
 <body>
       <header class="main-header">
@@ -93,55 +104,92 @@
 <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
 <fieldset>
   <legend>About your Pet</legend>
-  <div>
+  <div ng-class="{ 'has-error' : userForm.petname.$invalid && !userForm.petname.$pristine }">
     <label for="petname">Pet's Name</label>
-    <input type="text" placeholder="Pet's name" name="petname" id="petname" value="" ng-model="petname" required/>
-    <p></p>
+    <input type="text" placeholder="Pet's name" name="petname" id="petname" value="" ng-model="petname" required class="textfield"/>
+    <p ng-show="userForm.petname.$invalid && !userForm.petname.$pristine" class="help-block">Pet's name is required.</p>
   </div>
   <div>
     <label for="pettype">Type of your Pet</label>
-    <input type="text" placeholder="Type of pet (cat/dog/hamster)" name="pettype" id="pettype" value="" ng-model="pettype" required/>
+    <input type="text" placeholder="Type of pet (cat/dog/hamster)" name="pettype" id="pet.type" value="" ng-model="pettype" required class="textfield"/>
     <p></p>
   </div>
   <div>
     <label>Pet's Gender</label>
     <ul>
-      <li><input type="checkbox" name="petgender" value="male" id="petgender-male" ng-model="petgender" required> <label for="petgender-male">Male</label></li>
-      <li><input type="checkbox" name="petgender" value="female" id="petgender-female" ng-model="petgender" required> <label for="petgender-female">Female</label></li>
+      <li><label ><input type="radio" name="petgender" value="male" id="petgender-male" ng-model="pet.gender" required> Male</label></li>
+      <li><label ><input type="radio" name="petgender" value="female" id="petgender-female" ng-model="petgender" required> Female</label></li>
     </ul>
     <p></p>
   </div>
   <div>
     <label for="petdob">Pet's Date of Birth</label>
-    <input type="text" placeholder="Pet Date of Birth" name="petdob" id="petdob" value="" ng-model="petdob" required/>
+    <input type="date" name="petdob" id="petdob" value="" ng-model="pet.dob" required class="textfield"/>
     <p></p>
   </div>
   <div>
-    <label for="petchipped"></label>
+    <label>Is Pet Chipped or Tagged</label>
     <ul>
-      <li><input type="checkbox" name="petchipped" value="yes" id="petchipped-yes" ng-model="petchipped" required> <label for="petchipped-yes">Yes</label></li>
-      <li><input type="checkbox" name="petchipped" value="no" id="petchipped-no" ng-model="petchipped" required> <label for="petchipped-no">No</label></li>
-      <li><input type="checkbox" name="petchipped" value="unknown" id="petchipped-unknown" ng-model="petchipped" required> <label for="petchipped-unknown">Don't know</label></li>
+      <li><label ><input type="radio" name="petchipped" value="yes" id="petchipped_yes" ng-model="pet.chipped" required>Yes</label></li>
+      <li><label ><input type="radio" name="petchipped" value="no" id="petchipped_no" ng-model="pet.chipped" required> No</label></li>
+      <li><label ><input type="radio" name="petchipped" value="unknown" id="petchipped_unknown" ng-model="pet.chipped" required> Don't know</label></li>
     </ul>
     <p></p>
   </div>
 </fieldset>
 
-About you:
- title
- Name
- DOB
- email
- contact telephone
-About the policy:
- Cover start date
 
 <fieldset>
   <legend>About You</legend>
+  <div>
+    <label for="title">Title</label>
+    <input type="text" placeholder="Your title" name="title" id="title" value="" ng-model="user.title" required class="textfield"/>
+    <p></p>
+  </div>
+
+  <div>
+    <label for="name">Name</label>
+    <input type="text" placeholder="Your name" name="name" id="name" value="" ng-model="user.name" required class="textfield"/>
+    <p></p>
+  </div>
+
+  <div>
+    <label for="dob">Date of Birth</label>
+    <input type="date" name="dob" id="dob" value="" ng-model="user.dob" required class="textfield"/>
+    <p></p>
+  </div>
+
+  <div  ng-class="{ 'has-error' : userForm.email.$invalid && !userForm.email.$pristine }>
+    <label for="email">Email</label>
+    <input type="email" placeholder="Your email address" name="email" id="email" value="" ng-model="user.email" required class="textfield"/>
+    <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">Enter a valid email.</p>
+  </div>
+
+  <div>
+    <label for="tel">Telephone number</label>
+    <input type="text" placeholder="Your telephone number" name="tel" id="tel" value="" ng-model="user.tel" required class="textfield"/>
+    <p></p>
+  </div>
 </fieldset>
+
+
+
 <fieldset>
   <legend>About the Policy</legend>
+  <div>
+    <label for="policystart">Pet's Date of Birth</label>
+    <input type="date" name="policystart" id="policystart" value="" ng-model="policy.start" required class="textfield"/>
+    <p></p>
+  </div>
+
 </fieldset>
+
+  <div class="submit">
+    <button type="submit" class="btn btn-primary" ng-disabled="userForm.$invalid">Continue</Button>
+  </div>
+
+
+
 </form>
 
 </section>
