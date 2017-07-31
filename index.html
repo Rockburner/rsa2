@@ -1,0 +1,149 @@
+<html>
+<head>
+    <title>About You and Your Pets: MORE TH>N Pet Insurance</title>
+
+      <link rel="shortcut icon" href="https://rsagroup.usablenet.net/h5/pet/images/favicon.w_pet_1470065886000hc.ico">
+
+<!-- load in the MoreThan css -->
+      <link href="https://rsagroup.usablenet.net/h5/pet/module/styles.w_320-wk_Safari_-v1.546hc.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://rsagroup.usablenet.net/h5/pet/css/step-1.w_320-wk_Safari_-pet-1490263378000hc.css" />
+  <link rel="stylesheet" href="https://rsagroup.usablenet.net/h5/pet/css/steps.w_320-wk_Safari_-pet-1490263378000hc.css" />
+
+<!-- load the angular codebase -->
+    <script src="http://code.angularjs.org/1.2.6/angular.js"></script> 
+
+</head>
+<body>
+      <header class="main-header">
+        
+        
+  
+
+  
+  <section class="header-help-content">
+
+    
+    
+
+    <ul class="group-header">
+      
+        <li>
+          <div class="header-button" >
+            
+              <div>
+                <a target="_blank" href="r/www.morethan.com/customer-help/answers/pet"><div>Frequently Asked Questions:</div><p class="xx-small-text yellow">Visit our customer help centre</p></a>
+              </div>
+            
+          </div>
+        </li>
+      
+        <li>
+          <div class="header-button" >
+            
+              <div>
+                
+                <a href="#a">Phone: Call us on <span class="tel-number">0330 100 7824</span><p class="xx-small-text yellow">Mon-Fri 8am to 9pm, Sat-Sun 9am to 5pm</p></a>
+              </div>
+            
+          </div>
+        </li>
+      
+        <li>
+          <div class="header-button" id=lpButton-application-top>
+            
+              <div>
+                
+                <a href="#a">Online Chat:<p class="xx-small-text yellow">Speak to an online chat representative</p></a>
+              </div>
+            
+          </div>
+        </li>
+      
+      <li class="text-right"><button class="btn-help close s-col-2 m-col-3 l-col-2">Close</button></li>
+    </ul>
+  </section>
+
+
+
+<section class="help-heading">
+  <div class="header-img"></div>
+  <div class="toggleHelpContent">
+    <ul class="group">
+      <li class="text-left">
+        <a href="/h5/pet/step-1"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAkUAAEALAAAAAABAAEAAAICTAEAOw==" data-bundle="global/logo-morethan.png" class="header-logo" /></a>
+      </li>
+      <li class="text-right">
+        
+          <button class="btn-help s-col-2 m-col-3 l-col-2">
+            <span class="d-hide">Help</span>
+            <span class="m-hide t-hide">Need Help?</span>
+          </button>
+        
+      </li>
+    </ul>
+  </div>
+</section>
+
+
+</header>
+
+<!-- set a container for the angular driven app (rather than using angular on the entire body) -->
+<section  ng-app="validationApp" ng-controller="mainController" >
+
+<form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+<fieldset>
+  <legend>About your Pet</legend>
+  <div>
+    <label for="petname">Pet's Name</label>
+    <input type="text" placeholder="Pet's name" name="petname" id="petname" value="" ng-model="petname" required/>
+    <p></p>
+  </div>
+  <div>
+    <label for="pettype">Type of your Pet</label>
+    <input type="text" placeholder="Type of pet (cat/dog/hamster)" name="pettype" id="pettype" value="" ng-model="pettype" required/>
+    <p></p>
+  </div>
+  <div>
+    <label>Pet's Gender</label>
+    <ul>
+      <li><input type="checkbox" name="petgender" value="male" id="petgender-male" ng-model="petgender" required> <label for="petgender-male">Male</label></li>
+      <li><input type="checkbox" name="petgender" value="female" id="petgender-female" ng-model="petgender" required> <label for="petgender-female">Female</label></li>
+    </ul>
+    <p></p>
+  </div>
+  <div>
+    <label for="petdob">Pet's Date of Birth</label>
+    <input type="text" placeholder="Pet Date of Birth" name="petdob" id="petdob" value="" ng-model="petdob" required/>
+    <p></p>
+  </div>
+  <div>
+    <label for="petchipped"></label>
+    <ul>
+      <li><input type="checkbox" name="petchipped" value="yes" id="petchipped-yes" ng-model="petchipped" required> <label for="petchipped-yes">Yes</label></li>
+      <li><input type="checkbox" name="petchipped" value="no" id="petchipped-no" ng-model="petchipped" required> <label for="petchipped-no">No</label></li>
+      <li><input type="checkbox" name="petchipped" value="unknown" id="petchipped-unknown" ng-model="petchipped" required> <label for="petchipped-unknown">Don't know</label></li>
+    </ul>
+    <p></p>
+  </div>
+</fieldset>
+
+About you:
+ title
+ Name
+ DOB
+ email
+ contact telephone
+About the policy:
+ Cover start date
+
+<fieldset>
+  <legend>About You</legend>
+</fieldset>
+<fieldset>
+  <legend>About the Policy</legend>
+</fieldset>
+</form>
+
+</section>
+</body>
+</html>
